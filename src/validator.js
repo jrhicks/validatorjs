@@ -161,12 +161,14 @@ Validator.prototype = {
 				rulesArray = rulesArray.split('|');
 			}
 			
-			for (var i = 0, len = rulesArray.length, rule; i < len; i++) {
-				rule = this._extractRuleAndRuleValue(rulesArray[i]);
-				if (Rules.isAsync(rule.name)) {
-					this.hasAsync = true;
-				}
-				attributeRules.push(rule);
+			if (rulesArray) {
+				for (var i = 0, len = rulesArray.length, rule; i < len; i++) {
+					rule = this._extractRuleAndRuleValue(rulesArray[i]);
+					if (Rules.isAsync(rule.name)) {
+						this.hasAsync = true;
+					}
+					attributeRules.push(rule);
+				}	
 			}
 
 			parsedRules[attribute] = attributeRules;
